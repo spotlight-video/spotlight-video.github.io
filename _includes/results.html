@@ -1,0 +1,40 @@
+<!-- Results: the dark "spotlight" band with the headline finding + interactive charts. -->
+<section class="section section--dark" id="results">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow eyebrow--gold">Key result</p>
+      <h2 class="section__title">Humans still beat the best VLMs by nearly 2×</h2>
+      <p class="prose prose--center prose--invert">
+        Across both metrics, the strongest baselines fall far short of human annotators at
+        localizing and explaining errors.
+      </p>
+    </div>
+
+    <!-- Main results chart with metric toggle -->
+    <div class="chart-card chart-card--dark reveal">
+      <div class="chart-card__head">
+        <div class="toggle" role="tablist" aria-label="Metric">
+          <button class="toggle__btn is-active" role="tab" data-metric="sp" data-target="main">Score (S+P)</button>
+          <button class="toggle__btn" role="tab" data-metric="gt" data-target="main">%GT (S+P)</button>
+        </div>
+        <p class="chart-card__formula" id="mainFormula">M(E, Ê)</p>
+      </div>
+      <div class="chart-box chart-box--tall"><canvas id="chartMain" aria-label="Grouped bar chart comparing methods on the selected metric" role="img"></canvas></div>
+    </div>
+
+    <!-- Difficulty trend chart (shares the metric toggle target "diff") -->
+    <div class="chart-card chart-card--dark reveal">
+      <div class="chart-card__head">
+        <div>
+          <h3 class="chart-card__title">Performance vs. difficulty</h3>
+          <p class="muted">More obvious errors are easier for everyone to catch.</p>
+        </div>
+        <div class="toggle" role="tablist" aria-label="Metric">
+          <button class="toggle__btn is-active" role="tab" data-metric="sp" data-target="diff">Score (S+P)</button>
+          <button class="toggle__btn" role="tab" data-metric="gt" data-target="diff">%GT (S+P)</button>
+        </div>
+      </div>
+      <div class="chart-box chart-box--tall"><canvas id="chartDifficulty" aria-label="Line chart of performance across difficulty levels" role="img"></canvas></div>
+    </div>
+  </div>
+</section>

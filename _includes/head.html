@@ -1,0 +1,29 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% assign full_title = site.title | append: ": " | append: site.tagline %}
+  <title>{{ full_title }}</title>
+  <meta name="description" content="{{ site.description }}">
+
+  <!-- Open Graph / social cards -->
+  <meta property="og:title" content="{{ full_title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.og_image }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {% if site.twitter != "" %}<meta name="twitter:site" content="{{ site.twitter }}">{% endif %}
+
+  <!-- Fonts: Space Grotesk (display) + Inter (body) + JetBrains Mono (metrics/code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <!-- Data bridge: expose results.yml to charts.js as JSON (no inline data in JS). -->
+  <script>
+    window.SPOTLIGHT_DATA = {{ site.data.results | jsonify }};
+  </script>
+</head>

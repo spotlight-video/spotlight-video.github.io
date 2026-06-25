@@ -1,0 +1,75 @@
+# Interactive example gallery.
+# Add an entry per clip. When `clips` is empty the gallery shows a
+# "examples coming soon" placeholder automatically.
+#
+# Per clip:
+#   id        : unique slug
+#   prompt    : the text prompt used to generate the video
+#   model     : T2V model name
+#   poster    : thumbnail image (assets/img/...). Falls back to the hero poster.
+#   video     : video file (assets/video/...). Optional; omit for image-only.
+#   duration  : clip length in seconds (for the timeline scale)
+#   errors    : list of localized errors
+#                 - start/end : seconds
+#                   category  : one of the 6 taxonomy titles (drives the chip color group)
+#                   text      : the annotation
+#
+# The three placeholders below are derived from the paper's figures so the
+# layout is visible immediately. Replace with real clips + annotations.
+
+clips:
+  - id: "kangaroo"
+    prompt: "A kangaroo joey peeks out from its mother's pouch, hops out, and then runs away."
+    model: "Veo 3"
+    poster: ""        # uses hero poster until a real thumbnail is added
+    video: ""         # add assets/video/kangaroo.mp4 later
+    duration: 8.0
+    errors:
+      - start: 1.0
+        end: 3.0
+        category: "Body Pose & Anatomy"
+        text: "The pouch joey is in looks like a fabric pouch made from clothes, not the mother's skin."
+      - start: 3.0
+        end: 5.0
+        category: "Appearance / Disappearance"
+        text: "Pouch disappears on its own into nowhere."
+      - start: 5.0
+        end: 8.0
+        category: "Physical Violations"
+        text: "The joey appears to not climb out of the pouch; instead, it just appears outside of the pouch."
+
+  - id: "cat-plant"
+    prompt: "A cat knocks a plant off a windowsill, and then runs away."
+    model: "Veo 3"
+    poster: ""
+    video: ""
+    duration: 8.0
+    errors:
+      - start: 2.5
+        end: 5.0
+        category: "Physical Violations"
+        text: "Plant flying out of small pot looks unrealistic."
+      - start: 3.9
+        end: 5.0
+        category: "Logical Errors"
+        text: "The cat knocks over the small plant, but the plant does not fall realistically."
+      - start: 2.7
+        end: 5.7
+        category: "Motion Artifacts"
+        text: "Unrealistic cat movement as it knocks over the plant."
+
+  - id: "car-door"
+    prompt: "A person stands in a room with a tiled floor, interacting with a modern car door. They hold the door handle and pull it to open the door."
+    model: "Seedance"
+    poster: ""
+    video: ""
+    duration: 6.0
+    errors:
+      - start: 1.0
+        end: 1.5
+        category: "Prompt Adherence"
+        text: "Car is missing many important parts (tires, windows, steering wheel)."
+      - start: 2.5
+        end: 6.0
+        category: "Appearance / Disappearance"
+        text: "The front wheel and front portion of the car only appear after the car door's opening."

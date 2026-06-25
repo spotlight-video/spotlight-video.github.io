@@ -1,0 +1,17 @@
+# Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Ruby / Bundler
+.bundle/
+vendor/
+
+# OS
+.DS_Store
+
+# Large source assets — do NOT commit (over GitHub limits / unneeded on web).
+# The web-optimized hero video lives in assets/video/spotlight.mp4 instead.
+assets/SpotlightVideo.mov
+assets/pdf/spotlight-paper.pdf

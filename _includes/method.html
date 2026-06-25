@@ -1,0 +1,68 @@
+<!-- Method: matching metric stepper, baseline strategies, dataset composition chart. -->
+<section class="section" id="method">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Method</p>
+      <h2 class="section__title">Scoring localized error predictions</h2>
+      <p class="prose prose--center">
+        We compare a model's predicted errors against ground-truth annotations with a
+        pairwise-matching metric, then evaluate several inference-time baselines.
+      </p>
+    </div>
+
+    <!-- Metric stepper -->
+    <ol class="steps reveal">
+      <li class="step">
+        <span class="step__n">1</span>
+        <h4>Pairwise scores</h4>
+        <p>Score every predicted error against every ground-truth error to fill matrix <em>F</em>.</p>
+      </li>
+      <li class="step">
+        <span class="step__n">2</span>
+        <h4>Threshold τ = 0.7</h4>
+        <p>Keep only confident matches to build the binary match matrix.</p>
+      </li>
+      <li class="step">
+        <span class="step__n">3</span>
+        <h4>Bipartite matching</h4>
+        <p>Find the best one-to-one match pairs, then compute <em>M</em> and <em>M%</em>.</p>
+      </li>
+    </ol>
+
+    <figure class="figure figure--bordered reveal">
+      <img src="{{ '/assets/img/DataMetrics.png' | relative_url }}" alt="Left: distribution of T2V models across difficulty and average segment length. Right: a worked example of pairwise matching producing M=0.85 and M%=2/4." loading="lazy">
+      <figcaption>Fig. 3: T2V data analysis (a) and a worked example of pairwise matching (b).</figcaption>
+    </figure>
+
+    <!-- Baseline strategies -->
+    <h3 class="subhead reveal">Inference-time baselines</h3>
+    <div class="grid grid--3 reveal">
+      <article class="card">
+        <h4 class="card__title">Window-Based</h4>
+        <p class="card__desc">Find errors in short windows, then join, filter, and merge with pairwise comparison.</p>
+      </article>
+      <article class="card">
+        <h4 class="card__title">Sequential</h4>
+        <p class="card__desc">First reason about errors over the full video, then localize each one in a second pass.</p>
+      </article>
+      <article class="card">
+        <h4 class="card__title">Multi-Agent</h4>
+        <p class="card__desc">Specialized agents identify errors by type (physics, anatomy, adherence…), then join all errors.</p>
+      </article>
+    </div>
+
+    <figure class="figure figure--bordered reveal">
+      <img src="{{ '/assets/img/baselines.png' | relative_url }}" alt="Diagrams of three inference-time baselines: window-based, sequential, and multi-agent." loading="lazy">
+      <figcaption>Fig. 4: Inference-time baseline strategies.</figcaption>
+    </figure>
+
+    <!-- Dataset composition (interactive) -->
+    <h3 class="subhead reveal">Dataset composition</h3>
+    <div class="chart-card reveal">
+      <div class="chart-card__head">
+        <p>Videos by difficulty, stacked by T2V model. <span class="muted">Click a model in the legend to toggle it.</span></p>
+      </div>
+      <div class="chart-box"><canvas id="chartComposition" aria-label="Stacked bar chart of video counts by difficulty and model" role="img"></canvas></div>
+    </div>
+  </div>
+</section>

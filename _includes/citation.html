@@ -1,0 +1,32 @@
+<!-- Citation: BibTeX block with copy button + restated links. -->
+<section class="section section--alt" id="cite">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Citation</p>
+      <h2 class="section__title">Cite Spotlight</h2>
+    </div>
+
+    <div class="bibtex reveal">
+      <button class="bibtex__copy" id="copyBibtex" aria-label="Copy BibTeX">
+        {% include icon.html name="copy" %} <span>Copy</span>
+      </button>
+<pre id="bibtex"><code>@inproceedings{chinchure2026spotlight,
+  title     = {Spotlight: Identifying and Localizing Video Generation Errors Using VLMs},
+  author    = {Chinchure, Aditya and Ravi, Sahithya and Shukla, Pushkar and
+               Shwartz, Vered and Sigal, Leonid},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026},
+  eprint    = {2511.18102},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV}
+}</code></pre>
+    </div>
+
+    <div class="links reveal">
+      {% if site.links.arxiv != "" %}<a class="btn btn--outline" href="{{ site.links.arxiv }}" target="_blank" rel="noopener">arXiv ↗</a>{% endif %}
+      {% if site.links.data  != "" %}<a class="btn btn--outline" href="{{ site.links.data }}"  target="_blank" rel="noopener">Dataset ↗</a>{% endif %}
+      {% if site.links.code  != "" %}<a class="btn btn--outline" href="{{ site.links.code }}"  target="_blank" rel="noopener">Code ↗</a>
+      {% else %}<span class="btn btn--ghost is-disabled">Code — coming soon</span>{% endif %}
+    </div>
+  </div>
+</section>

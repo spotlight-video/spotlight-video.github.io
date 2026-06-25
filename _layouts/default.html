@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+  {% include nav.html %}
+  <main>
+    {{ content }}
+  </main>
+  {% include footer.html %}
+
+  <!-- Chart.js (CDN) — only library dependency, loaded once. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- Site scripts (vanilla, no bundler). Order matters: charts.js reads window.SPOTLIGHT_DATA. -->
+  <script src="{{ '/assets/js/nav.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/reveal.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/counters.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/charts.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/gallery.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/copy.js' | relative_url }}"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!-- Taxonomy: 6 categories grouped into 3 dimensions. Data: _data/taxonomy.yml -->
+<section class="section section--alt" id="taxonomy">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Taxonomy</p>
+      <h2 class="section__title">Six error types, three dimensions</h2>
+      <p class="prose prose--center">
+        Every annotation in Spotlight is tagged with one of six fine-grained error types,
+        spanning the physics, semantics, and anatomy of a generated video.
+      </p>
+    </div>
+
+    <div class="tax">
+      {% for group in site.data.taxonomy.groups %}
+        <div class="tax__group reveal" data-accent="{{ group.color }}">
+          <h3 class="tax__group-name">{{ group.name }}</h3>
+          <div class="tax__cards">
+            {% for c in group.categories %}
+              <article class="card tax__card">
+                <span class="tax__num">{{ c.num }}</span>
+                <h4 class="card__title">{{ c.title }}</h4>
+                <p class="card__desc">{{ c.desc }}</p>
+                <p class="tax__eg">{{ c.example }}</p>
+              </article>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

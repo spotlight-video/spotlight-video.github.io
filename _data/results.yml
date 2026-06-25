@@ -1,0 +1,96 @@
+# All numbers driving the interactive charts live here.
+# Update values and the charts re-render — no JavaScript edits needed.
+# Method order is preserved across charts; `key` ties to a fixed color in charts.js.
+
+methods:
+  - key: "qwen"        # -> taupe
+    label: "Qwen3-8B"
+  - key: "gemini"      # -> sage
+    label: "Gemini 2.5 Pro"
+  - key: "qwen_ma"     # -> coral
+    label: "Qwen3-8B MultiAgent"
+  - key: "human"       # -> gold (the bar to beat)
+    label: "Human"
+
+# Main results — two metrics, toggled in the UI.
+main_results:
+  metrics:
+    - id: "sp"
+      label: "Score (S+P)"
+      formula: "M(E, Ê)"
+      values: { qwen: 0.148, gemini: 0.25, qwen_ma: 0.254, human: 0.508 }
+    - id: "gt"
+      label: "%GT (S+P)"
+      formula: "M%(E, Ê)"
+      values: { qwen: 0.08, gemini: 0.126, qwen_ma: 0.133, human: 0.268 }
+  # Highlighted ~2x jumps to annotate on the chart.
+  jumps:
+    - from: "gemini"
+      to: "human"
+      label: "≈2× gap to humans"
+
+# Difficulty trend — score by difficulty level, per method, per metric.
+difficulty:
+  levels: ["Hard", "Med", "Easy"]
+  series:
+    sp:   # M(E,Ê)
+      qwen:    [0.05, 0.10, 0.18]
+      gemini:  [0.14, 0.22, 0.34]
+      qwen_ma: [0.15, 0.23, 0.36]
+      human:   [0.30, 0.46, 0.60]
+    gt:   # M%(E,Ê)
+      qwen:    [0.03, 0.06, 0.12]
+      gemini:  [0.07, 0.12, 0.20]
+      qwen_ma: [0.08, 0.13, 0.21]
+      human:   [0.16, 0.25, 0.36]
+  note: >-
+    Approximate trends read from Fig. 6(a); replace with exact values when available.
+
+# Dataset composition — video counts by difficulty, stacked by T2V model.
+composition:
+  models: ["Veo 3", "Seedance", "LTX-2"]
+  levels:
+    - level: "Hard"
+      total: 415
+    - level: "Med"
+      total: 396
+    - level: "Easy"
+      total: 793
+  # Per-model split is approximate (totals are from Fig. 3a); adjust as needed.
+  split:
+    Veo 3:    [140, 132, 264]
+    Seedance: [138, 132, 265]
+    LTX-2:    [137, 132, 264]
+
+# Failure-mode breakdown for Gemini 2.5 Pro (Fig. 6b), in percent.
+failure_modes:
+  - label: "Perception"
+    pct: 29
+  - label: "Hallucination"
+    pct: 29
+  - label: "World Understanding"
+    pct: 19
+  - label: "Subtle Mistakes"
+    pct: 14
+  - label: "Language Prior"
+    pct: 6
+  - label: "Other"
+    pct: 5
+
+# Headline stat tiles (Overview section). `suffix`/`prefix` are optional.
+stats:
+  - value: 600
+    label: "AI-generated videos"
+    sub: "Veo 3 · Seedance · LTX-2"
+  - value: 1600
+    suffix: "+"
+    label: "Error localizations"
+    sub: "fine-grained & temporal"
+  - value: 6
+    label: "Error categories"
+    sub: "across 3 dimensions"
+  - value: 2
+    prefix: "≈"
+    suffix: "×"
+    label: "Human advantage"
+    sub: "over the best VLM"

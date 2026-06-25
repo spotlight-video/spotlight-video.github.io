@@ -1,0 +1,36 @@
+<!-- Error analysis: failure-mode donut + diagnosis cards + qualitative figure. -->
+<section class="section section--alt" id="analysis">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Error analysis</p>
+      <h2 class="section__title">Where the models go wrong</h2>
+      <p class="prose prose--center">
+        We categorized the failures of Gemini 2.5 Pro. Faulty perception and hallucination
+        dominate — the model often misses what is visibly there, or invents errors that
+        aren't.
+      </p>
+    </div>
+
+    <div class="grid grid--analysis">
+      <div class="chart-card reveal">
+        <div class="chart-card__head"><h3 class="chart-card__title">Failure modes (Gemini 2.5 Pro)</h3></div>
+        <div class="chart-box"><canvas id="chartFailures" aria-label="Donut chart of failure mode percentages" role="img"></canvas></div>
+      </div>
+
+      <ul class="diagnosis reveal">
+        <li>
+          <h4>Faulty perception</h4>
+          <p>Can't compare frames and misses what's visibly there — which leads to hallucinated errors.</p>
+        </li>
+        <li>
+          <h4>Wrong world knowledge</h4>
+          <p>Bad intuition for what is physically plausible.</p>
+        </li>
+        <li>
+          <h4>Localization failure</h4>
+          <p>Open-source models (Qwen3-VL) flag the whole clip as a single error.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

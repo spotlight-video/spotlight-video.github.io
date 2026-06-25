@@ -1,0 +1,40 @@
+# The 6 error categories, grouped by the 3 dimensions.
+# Rendered as grouped cards in the Taxonomy section.
+# `color` maps to a palette token (gold | sage | coral) for the group accent.
+
+groups:
+  - name: "Physics"
+    color: "sage"
+    categories:
+      - num: 1
+        title: "Physical Violations"
+        desc: "Violations of physical laws, e.g., floating objects or unnatural trajectories."
+        example: "An object hovers with no support."
+      - num: 2
+        title: "Appearance / Disappearance"
+        desc: "Objects, people, or backgrounds appear or disappear unnaturally between frames."
+        example: "“The white sheet of paper appears out of thin air.”"
+      - num: 3
+        title: "Motion Artifacts"
+        desc: "Unnatural motion such as objects passing through each other or jittery movement."
+        example: "A hand clips through a solid table."
+
+  - name: "Semantics"
+    color: "gold"
+    categories:
+      - num: 4
+        title: "Prompt Adherence"
+        desc: "Failure to follow key elements or intent of the text prompt."
+        example: "“Prompt says she is reading, but she scrolls too fast to be reading.”"
+      - num: 5
+        title: "Logical Errors"
+        desc: "Actions that cannot logically co-exist, or illogical story progression."
+        example: "A glass shatters, then is whole again."
+
+  - name: "Anatomical"
+    color: "coral"
+    categories:
+      - num: 6
+        title: "Body Pose & Anatomy"
+        desc: "Impossible body shapes or joint movements; unrealistic morphing."
+        example: "A limb bends against its joint."

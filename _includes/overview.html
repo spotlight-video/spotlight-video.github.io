@@ -1,0 +1,47 @@
+<!-- Overview: abstract + animated stat tiles + teaser figure. -->
+<section class="section" id="overview">
+  <div class="wrap">
+    <div class="grid grid--abstract reveal">
+      <div>
+        <p class="eyebrow">Overview</p>
+        <h2 class="section__title">Can VLMs find the errors in AI-generated video?</h2>
+        <p class="prose">
+          As Text-to-Video models push toward higher realism, their artifacts become
+          nuanced, fine-grained, and spatio-temporally localized. VLMs are increasingly
+          used as automatic evaluators — but can they actually <em>detect, localize, and
+          explain</em> these errors? <strong>Spotlight</strong> is a benchmark of 600 videos
+          from state-of-the-art T2V models (Veo&nbsp;3, Seedance, LTX-2), annotated with
+          1,600+ fine-grained error localizations across physics, semantics, and anatomy.
+        </p>
+        <p class="prose">
+          Our experiments reveal that current VLMs lag well behind humans — the best
+          baselines trail human performance by nearly 2×, pointing to the need for more
+          robust perception and hallucination mitigation.
+        </p>
+      </div>
+
+      <!-- Stat tiles count up when scrolled into view (see counters.js). -->
+      <ul class="stats">
+        {% for s in site.data.results.stats %}
+          <li class="stat">
+            <span class="stat__num"
+                  data-count="{{ s.value }}"
+                  {% if s.prefix %}data-prefix="{{ s.prefix }}"{% endif %}
+                  {% if s.suffix %}data-suffix="{{ s.suffix }}"{% endif %}>0</span>
+            <span class="stat__label">{{ s.label }}</span>
+            <span class="stat__sub">{{ s.sub }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Teaser figure -->
+    <figure class="figure reveal">
+      <img src="{{ '/assets/img/steaser.png' | relative_url }}" alt="Spotlight teaser: a kangaroo video with localized error annotations, and a comparison showing Spotlight uniquely provides local errors and time segments." loading="lazy">
+      <figcaption>
+        Spotlight annotates <strong>local errors</strong> with <strong>time segments</strong>
+        and explanations — capabilities other video benchmarks lack.
+      </figcaption>
+    </figure>
+  </div>
+</section>

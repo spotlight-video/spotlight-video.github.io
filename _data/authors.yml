@@ -1,0 +1,25 @@
+# Author list for the hero byline.
+# - `affil` is an index (1-based) into the `affiliations` list below.
+# - `url` is optional; leave "" for no link.
+# Edit freely; the hero re-renders the byline and the footnote markers.
+
+people:
+  - name: "Aditya Chinchure"
+    url: "https://aditya10.github.io/"
+    affil: [1]
+  - name: "Sahithya Ravi"
+    url: ""
+    affil: [1]
+  - name: "Pushkar Shukla"
+    url: ""
+    affil: [2]
+  - name: "Vered Shwartz"
+    url: ""
+    affil: [1]
+  - name: "Leonid Sigal"
+    url: ""
+    affil: [1]
+
+affiliations:
+  - "University of British Columbia"
+  - "Toyota Technological Institute at Chicago"

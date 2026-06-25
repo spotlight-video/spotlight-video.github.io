@@ -1,0 +1,64 @@
+<!-- Qualitative examples + interactive gallery. Data: _data/examples.yml -->
+<section class="section" id="examples">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Examples</p>
+      <h2 class="section__title">Browse annotated examples</h2>
+      <p class="prose prose--center">
+        Each video carries timestamped, categorized error annotations. Click a card to
+        open it and step through the localized errors on a timeline.
+      </p>
+    </div>
+
+    {% assign clips = site.data.examples.clips %}
+    {% if clips and clips.size > 0 %}
+      <div class="gallery reveal" id="gallery">
+        {% for clip in clips %}
+          {% assign poster = clip.poster | default: '/assets/video/poster.jpg' %}
+          <button class="gcard"
+                  data-clip="{{ clip.id }}"
+                  data-prompt="{{ clip.prompt | escape }}"
+                  data-model="{{ clip.model }}"
+                  data-duration="{{ clip.duration }}"
+                  data-video="{% if clip.video and clip.video != '' %}{{ clip.video | relative_url }}{% endif %}"
+                  data-poster="{{ poster | relative_url }}"
+                  data-errors="{{ clip.errors | jsonify | escape }}">
+            <span class="gcard__thumb" style="background-image:url('{{ poster | relative_url }}')">
+              <span class="gcard__play">{% include icon.html name="play" %}</span>
+              <span class="gcard__badge">{{ clip.model }}</span>
+            </span>
+            <span class="gcard__body">
+              <span class="gcard__prompt">{{ clip.prompt | truncate: 90 }}</span>
+              <span class="gcard__meta">{{ clip.errors.size }} localized error{% if clip.errors.size != 1 %}s{% endif %}</span>
+            </span>
+          </button>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="placeholder reveal">
+        <p>Example clips are coming soon.</p>
+      </div>
+    {% endif %}
+
+    <!-- Static qualitative figure from the paper -->
+    <figure class="figure figure--bordered reveal">
+      <img src="{{ '/assets/img/quali.png' | relative_url }}" alt="Qualitative examples comparing model predictions against ground-truth error annotations." loading="lazy">
+      <figcaption>Fig. 5: Qualitative examples — model successes and failures against ground-truth annotations.</figcaption>
+    </figure>
+  </div>
+
+  <!-- Lightbox (populated by gallery.js) -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox__backdrop" data-close></div>
+    <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Example detail">
+      <button class="lightbox__close" data-close aria-label="Close">×</button>
+      <div class="lightbox__media" id="lbMedia"></div>
+      <div class="lightbox__info">
+        <p class="lightbox__model" id="lbModel"></p>
+        <p class="lightbox__prompt" id="lbPrompt"></p>
+        <div class="timeline" id="lbTimeline"></div>
+        <ul class="errlist" id="lbErrors"></ul>
+      </div>
+    </div>
+  </div>
+</section>

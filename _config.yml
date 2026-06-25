@@ -1,0 +1,46 @@
+# ============================================================================
+#  Spotlight — site configuration
+#  Edit values here to change site-wide metadata, links, and the conference tag.
+#  After changing this file you must restart `jekyll serve` for it to take effect.
+# ============================================================================
+
+# --- Paper metadata ---------------------------------------------------------
+title: "Spotlight"
+tagline: "Identifying and Localizing Video Generation Errors Using VLMs"
+conference: "ECCV 2026"
+description: >-
+  A benchmark for evaluating Vision Language Models on precisely localizing and
+  explaining errors in AI-generated videos: 1,600+ fine-grained, temporally
+  localized error annotations across 6 categories and 3 difficulty levels.
+
+# --- Deployment -------------------------------------------------------------
+# User/org page (https://spotlight-video.github.io) serves at the root,
+# so url has no path and baseurl is empty. Change these if you fork/rename.
+url: "https://spotlight-video.github.io"
+baseurl: ""
+
+# --- External links (used by nav, hero, and citation) -----------------------
+# Set a link to "" to render its button as a disabled "coming soon" state.
+links:
+  arxiv: "https://arxiv.org/abs/2511.18102v1"
+  data: "https://huggingface.co/UBC-ViL"
+  code: ""            # e.g. "https://github.com/..." — empty = "coming soon"
+  pdf: "/assets/pdf/spotlight-paper.pdf"
+
+# --- Social / SEO -----------------------------------------------------------
+# Drop a 1200x630 image at assets/img/og.png for nice link previews (optional).
+og_image: "/assets/img/steaser.png"
+twitter: ""           # optional @handle for Twitter card
+
+# --- Build settings ---------------------------------------------------------
+# No extra plugins are used so this runs on stock GitHub Pages.
+encoding: "utf-8"
+markdown: kramdown
+exclude:
+  - DESIGN.md
+  - PAPER.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - assets/SpotlightVideo.mov
+  - assets/pdf/spotlight-paper.pdf
