@@ -23,8 +23,8 @@ baseurl: ""
 # Set a link to "" to render its button as a disabled "coming soon" state.
 links:
   arxiv: "https://arxiv.org/abs/2511.18102v1"
-  data: "https://huggingface.co/UBC-ViL"
-  code: ""            # e.g. "https://github.com/..." — empty = "coming soon"
+  data: "https://huggingface.co/datasets/UBC-ViL/Spotlight-VideoGen-Errors"
+  code: "https://github.com/aditya10/Spotlight"
   pdf: "/assets/pdf/spotlight-paper.pdf"
 
 # --- Social / SEO -----------------------------------------------------------

@@ -216,6 +216,10 @@ sup{ font-size: .62em; }
 .chart-box{ position: relative; height: 320px; }
 .chart-box--tall{ height: 380px; }
 
+/* Two key-result charts side by side */
+.results-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.results-grid .chart-card{ margin-top: 0; }
+
 .toggle{ display: inline-flex; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
 .chart-card--dark .toggle{ background: rgba(0,0,0,.25); border-color: rgba(255,255,255,.1); }
 .toggle__btn{ border: 0; background: none; cursor: pointer; padding: .45rem .9rem; border-radius: 999px;
@@ -268,7 +272,12 @@ sup{ font-size: .62em; }
   padding: .7rem .9rem; background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius-sm); }
 .err__time{ font-family: var(--font-mono); font-size: .8rem; color: var(--ink-soft); white-space: nowrap; }
 .err__cat{ display: inline-block; font-size: .72rem; font-weight: 600; padding: .12rem .5rem; border-radius: 999px; margin-bottom: .25rem; }
-.err__text{ margin: 0; font-size: .95rem; }
+.err__diff{ display: inline-block; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+  padding: .12rem .45rem; border-radius: 999px; margin-left: .35rem; border: 1px solid var(--line); color: var(--ink-soft); }
+.err__diff--easy{ border-color: rgba(143,169,166,.5); color: #5d7976; }
+.err__diff--medium{ border-color: rgba(216,155,44,.5); color: var(--gold-deep); }
+.err__diff--hard{ border-color: rgba(206,138,128,.6); color: #a85b51; }
+.err__text{ margin: .15rem 0 0; font-size: .95rem; }
 
 /* category color groups (physics=sage, semantics=gold, anatomy=coral) */
 .cat-sage{ background: rgba(143,169,166,.22); color: #4f6c69; }
@@ -301,7 +310,7 @@ sup{ font-size: .62em; }
 
 /* 5. ─── Responsive ────────────────────────────────────────────────────── */
 @media (max-width: 900px){
-  .grid--abstract, .grid--3, .grid--analysis, .tax__cards, .steps, .gallery{ grid-template-columns: 1fr; }
+  .grid--abstract, .grid--3, .grid--analysis, .tax__cards, .steps, .gallery, .results-grid{ grid-template-columns: 1fr; }
   .step:not(:last-child)::after{ content: "↓"; right: 50%; top: auto; bottom: -1.3rem; transform: translateX(50%); }
   .tax__cards{ grid-template-columns: 1fr 1fr; }
   .gallery{ grid-template-columns: 1fr 1fr; }

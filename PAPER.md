@@ -70,3 +70,119 @@ space constraints.
 difficulty_errors.pdf: Fig. 6: (a) Di!culty vs. S+P. We observe that more obvious errors are more easily
 detected by all methods. (b) Error Analysis. Gemini 2.5 pro fails across di"erent
 dimensions, with incorrect perception and hallucinations being the key failure modes.
+
+
+# Examples 
+
+
+sid_021_veo3.mp4:
+
+[
+            {
+                "segment": [
+                    1.1,
+                    1.8
+                ],
+                "reason": "Box flaps move for no reason.",
+                "type": "motion",
+                "difficulty": "easy"
+            },
+            {
+                "segment": [
+                    3.1,
+                    6
+                ],
+                "reason": "Cat's tail appears outside of box.",
+                "type": "logical",
+                "difficulty": "easy"
+            },
+            {
+                "segment": [
+                    0.3,
+                    4.3
+                ],
+                "reason": "The box is set up wrong, with two flaps open and two shut perfectly, then the closed flaps shift suddenly to being open on each side",
+                "type": "app_disapp",
+                "difficulty": "medium"
+            },
+            {
+                "segment": [
+                    0.6,
+                    4.2
+                ],
+                "reason": "All box flaps lift and float upwards on their own, not caused by the cat, and were already open so it makes no sense",
+                "type": "physical_viol",
+                "difficulty": "easy"
+            },
+            {
+                "segment": [
+                    2.7,
+                    5.2
+                ],
+                "reason": "Cat's tail goes through the box to rest on the floor behind it ",
+                "type": "motion",
+                "difficulty": "easy"
+            }
+        ]
+
+
+sid_029_ltx2.mp4:
+{
+                "segment": [
+                    0.1,
+                    1.8
+                ],
+                "reason": "Prompt says washing hands, person washing a towel.",
+                "type": "adherence",
+                "difficulty": "easy"
+            },
+            {
+                "segment": [
+                    3.5,
+                    4.9
+                ],
+                "reason": "the white towel she is holding magically morphs/changes into a gray pillow",
+                "type": "logical",
+                "difficulty": "easy"
+            },
+            {
+                "segment": [
+                    2.5,
+                    3.3
+                ],
+                "reason": "the small wet washcloth she is holding magically morphs and changes into a much larger towel/sheet",
+                "type": "logical",
+                "difficulty": "easy"
+            }
+
+
+sid_005_ltx2.mp4:
+[
+            {
+                "segment": [
+                    0,
+                    6
+                ],
+                "reason": "It preens it feathers at the beginning rather than the end.",
+                "type": "adherence",
+                "difficulty": "easy"
+            },
+            {
+                "segment": [
+                    3.4,
+                    6
+                ],
+                "reason": "The prompt does not specify the flamingo walking",
+                "type": "adherence",
+                "difficulty": "hard"
+            },
+            {
+                "segment": [
+                    0.5,
+                    3.2
+                ],
+                "reason": "It is not standing on one leg, but both are in the water.",
+                "type": "adherence",
+                "difficulty": "easy"
+            }
+        ],

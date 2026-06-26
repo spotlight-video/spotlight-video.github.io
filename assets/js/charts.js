@@ -35,31 +35,25 @@
   const textColor = (canvas) => (isDark(canvas) ? ON_DARK : INK);
   const gridColor = (canvas) => (isDark(canvas) ? GRID_DARK : GRID_LIGHT);
 
-  const pct = (x) => (x <= 1 ? Math.round(x * 1000) / 10 + '' : x + '');
-
   // ========================================================================
-  // 1. MAIN RESULTS — bar chart with metric toggle
+  // 1. KEY RESULTS — two bar charts (Score and %GT), shown side by side
   // ========================================================================
-  const mainCanvas = document.getElementById('chartMain');
-  let mainChart;
   function metricById(id) {
     return D.main_results.metrics.find((m) => m.id === id) || D.main_results.metrics[0];
   }
-  function buildMain(metricId) {
+  function makeResultBar(canvasId, metricId) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
     const metric = metricById(metricId);
     const labels = methodOrder.map((k) => methodLabel[k]);
     const data = methodOrder.map((k) => metric.values[k]);
     const colors = methodOrder.map((k) => colorFor(k));
-    return { metric, labels, data, colors };
-  }
-  if (mainCanvas) {
-    const { metric, labels, data, colors } = buildMain('sp');
-    mainChart = new Chart(mainCanvas, {
+    new Chart(canvas, {
       type: 'bar',
       data: {
         labels,
         datasets: [{ label: metric.label, data, backgroundColor: colors,
-          borderRadius: 8, maxBarThickness: 90 }],
+          borderRadius: 8, maxBarThickness: 70 }],
       },
       options: {
         responsive: true, maintainAspectRatio: false,
@@ -68,47 +62,14 @@
           tooltip: { callbacks: { label: (c) => ` ${c.formattedValue}` } },
         },
         scales: {
-          x: { grid: { display: false }, ticks: { color: textColor(mainCanvas) } },
-          y: { beginAtZero: true, grid: { color: gridColor(mainCanvas) },
-               ticks: { color: textColor(mainCanvas) } },
+          x: { grid: { display: false }, ticks: { color: textColor(canvas), maxRotation: 0, autoSkip: false, font: { size: 11 } } },
+          y: { beginAtZero: true, grid: { color: gridColor(canvas) }, ticks: { color: textColor(canvas) } },
         },
       },
     });
   }
-
-  // ========================================================================
-  // 2. DIFFICULTY — multi-line chart with metric toggle
-  // ========================================================================
-  const diffCanvas = document.getElementById('chartDifficulty');
-  let diffChart;
-  function buildDiffDatasets(metricId) {
-    const series = D.difficulty.series[metricId];
-    return methodOrder.map((k) => ({
-      label: methodLabel[k],
-      data: series[k],
-      borderColor: colorFor(k),
-      backgroundColor: colorFor(k),
-      borderWidth: k === 'human' ? 3 : 2,
-      tension: 0.3,
-      pointRadius: 4,
-      pointHoverRadius: 6,
-      fill: false,
-    }));
-  }
-  if (diffCanvas) {
-    diffChart = new Chart(diffCanvas, {
-      type: 'line',
-      data: { labels: D.difficulty.levels, datasets: buildDiffDatasets('sp') },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { labels: { color: textColor(diffCanvas), usePointStyle: true, pointStyle: 'circle' } } },
-        scales: {
-          x: { grid: { display: false }, ticks: { color: textColor(diffCanvas) } },
-          y: { beginAtZero: true, grid: { color: gridColor(diffCanvas) }, ticks: { color: textColor(diffCanvas) } },
-        },
-      },
-    });
-  }
+  makeResultBar('chartScore', 'sp');
+  makeResultBar('chartGT', 'gt');
 
   // ========================================================================
   // 3. COMPOSITION — stacked bars (videos by difficulty, stacked by model)
@@ -160,33 +121,4 @@
       },
     });
   }
-
-  // ========================================================================
-  // Metric toggles — buttons with [data-target=main|diff] and [data-metric]
-  // ========================================================================
-  document.querySelectorAll('.toggle__btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.target;
-      const metricId = btn.dataset.metric;
-
-      // active state within this toggle group
-      btn.parentElement.querySelectorAll('.toggle__btn').forEach((b) => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-
-      if (target === 'main' && mainChart) {
-        const { metric, data, colors } = buildMain(metricId);
-        mainChart.data.datasets[0].data = data;
-        mainChart.data.datasets[0].backgroundColor = colors;
-        mainChart.data.datasets[0].label = metric.label;
-        mainChart.update();
-        const f = document.getElementById('mainFormula');
-        if (f) f.textContent = metric.formula;
-      }
-      if (target === 'diff' && diffChart) {
-        const next = buildDiffDatasets(metricId);
-        diffChart.data.datasets.forEach((ds, i) => { ds.data = next[i].data; });
-        diffChart.update();
-      }
-    });
-  });
 })();

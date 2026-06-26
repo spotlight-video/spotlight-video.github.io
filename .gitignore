@@ -15,3 +15,6 @@ vendor/
 # The web-optimized hero video lives in assets/video/spotlight.mp4 instead.
 assets/SpotlightVideo.mov
 assets/pdf/spotlight-paper.pdf
+
+# Source example clips (masters). The faststart web copies live in assets/video/.
+assets/sid_*.mp4

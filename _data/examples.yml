@@ -7,69 +7,93 @@
 #   prompt    : the text prompt used to generate the video
 #   model     : T2V model name
 #   poster    : thumbnail image (assets/img/...). Falls back to the hero poster.
-#   video     : video file (assets/video/...). Optional; omit for image-only.
-#   duration  : clip length in seconds (for the timeline scale)
+#   video     : video file (assets/video/...). Omit for image-only.
+#   duration  : clip length in seconds (used to scale the timeline)
 #   errors    : list of localized errors
 #                 - start/end : seconds
-#                   category  : one of the 6 taxonomy titles (drives the chip color group)
+#                   category  : one of the 6 taxonomy titles (drives chip color)
+#                   difficulty: easy | medium | hard  (optional badge)
 #                   text      : the annotation
 #
-# The three placeholders below are derived from the paper's figures so the
-# layout is visible immediately. Replace with real clips + annotations.
+# NOTE: prompts below are concise paraphrases inferred from the annotations
+# (the source files ship annotations, not prompts) — edit to the exact prompt.
 
 clips:
-  - id: "kangaroo"
-    prompt: "A kangaroo joey peeks out from its mother's pouch, hops out, and then runs away."
-    model: "Veo 3"
-    poster: ""        # uses hero poster until a real thumbnail is added
-    video: ""         # add assets/video/kangaroo.mp4 later
-    duration: 8.0
+  - id: "sid_005_ltx2"
+    prompt: "A flamingo stands on one leg in the water, then preens its feathers."
+    model: "LTX-2"
+    poster: "/assets/img/sid_005_ltx2.jpg"
+    video: "/assets/video/sid_005_ltx2.mp4"
+    duration: 6.12
     errors:
-      - start: 1.0
-        end: 3.0
-        category: "Body Pose & Anatomy"
-        text: "The pouch joey is in looks like a fabric pouch made from clothes, not the mother's skin."
-      - start: 3.0
-        end: 5.0
-        category: "Appearance / Disappearance"
-        text: "Pouch disappears on its own into nowhere."
-      - start: 5.0
-        end: 8.0
-        category: "Physical Violations"
-        text: "The joey appears to not climb out of the pouch; instead, it just appears outside of the pouch."
+      - start: 0.0
+        end: 6.0
+        category: "Prompt Adherence"
+        difficulty: "easy"
+        text: "It preens its feathers at the beginning rather than the end."
+      - start: 0.5
+        end: 3.2
+        category: "Prompt Adherence"
+        difficulty: "easy"
+        text: "It is not standing on one leg — both legs are in the water."
+      - start: 3.4
+        end: 6.0
+        category: "Prompt Adherence"
+        difficulty: "hard"
+        text: "The prompt does not specify the flamingo walking."
 
-  - id: "cat-plant"
-    prompt: "A cat knocks a plant off a windowsill, and then runs away."
+  - id: "sid_021_veo3"
+    prompt: "A cat investigates a cardboard box on the floor."
     model: "Veo 3"
-    poster: ""
-    video: ""
-    duration: 8.0
-    errors:
-      - start: 2.5
-        end: 5.0
-        category: "Physical Violations"
-        text: "Plant flying out of small pot looks unrealistic."
-      - start: 3.9
-        end: 5.0
-        category: "Logical Errors"
-        text: "The cat knocks over the small plant, but the plant does not fall realistically."
-      - start: 2.7
-        end: 5.7
-        category: "Motion Artifacts"
-        text: "Unrealistic cat movement as it knocks over the plant."
-
-  - id: "car-door"
-    prompt: "A person stands in a room with a tiled floor, interacting with a modern car door. They hold the door handle and pull it to open the door."
-    model: "Seedance"
-    poster: ""
-    video: ""
+    poster: "/assets/img/sid_021_veo3.jpg"
+    video: "/assets/video/sid_021_veo3.mp4"
     duration: 6.0
     errors:
-      - start: 1.0
-        end: 1.5
-        category: "Prompt Adherence"
-        text: "Car is missing many important parts (tires, windows, steering wheel)."
-      - start: 2.5
-        end: 6.0
+      - start: 0.6
+        end: 4.2
+        category: "Physical Violations"
+        difficulty: "easy"
+        text: "All box flaps lift and float upwards on their own — not caused by the cat — and were already open, so it makes no sense."
+      - start: 0.3
+        end: 4.3
         category: "Appearance / Disappearance"
-        text: "The front wheel and front portion of the car only appear after the car door's opening."
+        difficulty: "medium"
+        text: "The box is set up wrong, with two flaps open and two shut perfectly, then the closed flaps shift suddenly to being open on each side."
+      - start: 1.1
+        end: 1.8
+        category: "Motion Artifacts"
+        difficulty: "easy"
+        text: "Box flaps move for no reason."
+      - start: 2.7
+        end: 5.2
+        category: "Motion Artifacts"
+        difficulty: "easy"
+        text: "Cat's tail goes through the box to rest on the floor behind it."
+      - start: 3.1
+        end: 6.0
+        category: "Logical Errors"
+        difficulty: "easy"
+        text: "Cat's tail appears outside of the box."
+
+  - id: "sid_029_ltx2"
+    prompt: "A person washes their hands."
+    model: "LTX-2"
+    poster: "/assets/img/sid_029_ltx2.jpg"
+    video: "/assets/video/sid_029_ltx2.mp4"
+    duration: 6.12
+    errors:
+      - start: 0.1
+        end: 1.8
+        category: "Prompt Adherence"
+        difficulty: "easy"
+        text: "Prompt says washing hands; the person is washing a towel."
+      - start: 2.5
+        end: 3.3
+        category: "Logical Errors"
+        difficulty: "easy"
+        text: "The small wet washcloth she is holding magically morphs into a much larger towel/sheet."
+      - start: 3.5
+        end: 4.9
+        category: "Logical Errors"
+        difficulty: "easy"
+        text: "The white towel she is holding magically morphs into a gray pillow."

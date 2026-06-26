@@ -55,9 +55,12 @@
     errList.innerHTML = errors
       .map((e) => {
         const g = groupOf(e.category);
+        const diff = e.difficulty
+          ? `<span class="err__diff err__diff--${e.difficulty}">${e.difficulty}</span>`
+          : '';
         return (
           `<li><span class="err__time">${e.start}–${e.end}s</span>` +
-          `<div><span class="err__cat cat-${g}">${e.category}</span>` +
+          `<div><span class="err__cat cat-${g}">${e.category}</span>${diff}` +
           `<p class="err__text">${e.text}</p></div></li>`
         );
       })

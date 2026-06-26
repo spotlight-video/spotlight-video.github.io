@@ -1,12 +1,13 @@
-<!-- Qualitative examples + interactive gallery. Data: _data/examples.yml -->
-<section class="section" id="examples">
+<!-- Interactive example gallery. Data: _data/examples.yml -->
+<section class="section section--alt" id="examples">
   <div class="wrap">
     <div class="section__head reveal">
       <p class="eyebrow">Examples</p>
-      <h2 class="section__title">Browse annotated examples</h2>
+      <h2 class="section__title">See the errors for yourself</h2>
       <p class="prose prose--center">
-        Each video carries timestamped, categorized error annotations. Click a card to
-        open it and step through the localized errors on a timeline.
+        Real AI-generated clips, each carrying timestamped, categorized error
+        annotations. Click a card to play the video and step through its localized
+        errors on a timeline.
       </p>
     </div>
 
@@ -39,12 +40,6 @@
         <p>Example clips are coming soon.</p>
       </div>
     {% endif %}
-
-    <!-- Static qualitative figure from the paper -->
-    <figure class="figure figure--bordered reveal">
-      <img src="{{ '/assets/img/quali.png' | relative_url }}" alt="Qualitative examples comparing model predictions against ground-truth error annotations." loading="lazy">
-      <figcaption>Fig. 5: Qualitative examples — model successes and failures against ground-truth annotations.</figcaption>
-    </figure>
   </div>
 
   <!-- Lightbox (populated by gallery.js) -->
