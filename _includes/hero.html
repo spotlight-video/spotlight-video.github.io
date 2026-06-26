@@ -45,7 +45,7 @@
 
     <!-- Framed inline player (poster + controls; not autoplay). -->
     <figure class="hero__video reveal">
-      <video controls preload="none" playsinline
+      <video controls autoplay muted loop playsinline preload="auto"
              poster="{{ '/assets/video/poster.jpg' | relative_url }}">
         <source src="{{ '/assets/video/spotlight.mp4' | relative_url }}" type="video/mp4">
         Your browser does not support the video tag.
