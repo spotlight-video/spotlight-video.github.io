@@ -16,7 +16,7 @@ Most changes are data edits — you rarely need to touch HTML/CSS/JS:
 
 | To change… | Edit |
 |---|---|
-| Title, tagline, conference, links (arXiv/data/code), SEO | [`_config.yml`](_config.yml) |
+| Title, tagline, conference, links (paper/poster/data/code), SEO | [`_config.yml`](_config.yml) |
 | Authors & affiliations (byline) | [`_data/authors.yml`](_data/authors.yml) |
 | Chart numbers, stat tiles | [`_data/results.yml`](_data/results.yml) |
 | Taxonomy categories & examples | [`_data/taxonomy.yml`](_data/taxonomy.yml) |

@@ -30,8 +30,11 @@
 
     <!-- Call-to-action buttons. Empty links render as disabled "coming soon". -->
     <div class="hero__cta">
-      {% if site.links.arxiv != "" %}
-        <a class="btn btn--primary" href="{{ site.links.arxiv }}" target="_blank" rel="noopener">{% include icon.html name="paper" %} arXiv</a>
+      {% if site.links.paper != "" %}
+        <a class="btn btn--primary" href="{{ site.links.paper }}" target="_blank" rel="noopener">{% include icon.html name="paper" %} Paper</a>
+      {% endif %}
+      {% if site.links.poster != "" %}
+        <a class="btn btn--outline" href="{{ site.links.poster }}" target="_blank" rel="noopener">{% include icon.html name="poster" %} Poster</a>
       {% endif %}
       {% if site.links.data != "" %}
         <a class="btn btn--outline" href="{{ site.links.data }}" target="_blank" rel="noopener">{% include icon.html name="data" %} Dataset</a>

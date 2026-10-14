@@ -2,7 +2,8 @@
   <div class="wrap footer__inner">
     <p class="footer__brand">{{ site.title }} <span>· {{ site.conference }}</span></p>
     <p class="footer__links">
-      {% if site.links.arxiv != "" %}<a href="{{ site.links.arxiv }}" target="_blank" rel="noopener">arXiv</a>{% endif %}
+      {% if site.links.paper != "" %}<a href="{{ site.links.paper }}" target="_blank" rel="noopener">Paper</a>{% endif %}
+      {% if site.links.poster != "" %}<a href="{{ site.links.poster }}" target="_blank" rel="noopener">Poster</a>{% endif %}
       {% if site.links.data != "" %}<a href="{{ site.links.data }}" target="_blank" rel="noopener">Dataset</a>{% endif %}
     </p>
   </div>

@@ -11,19 +11,18 @@
         {% include icon.html name="copy" %} <span>Copy</span>
       </button>
 <pre id="bibtex"><code>@inproceedings{chinchure2026spotlight,
-  title     = {Spotlight: Identifying and Localizing Video Generation Errors Using VLMs},
-  author    = {Chinchure, Aditya and Ravi, Sahithya and Shukla, Pushkar and
-               Shwartz, Vered and Sigal, Leonid},
-  booktitle = {European Conference on Computer Vision (ECCV)},
-  year      = {2026},
-  eprint    = {2511.18102},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.CV}
+  title={Spotlight: Identifying and localizing video generation errors using vlms},
+  author={Chinchure, Aditya and Ravi, Sahithya and Shukla, Pushkar and Shwartz, Vered and Sigal, Leonid},
+  booktitle={European Conference on Computer Vision},
+  pages={1--17},
+  year={2026},
+  organization={Springer}
 }</code></pre>
     </div>
 
     <div class="links reveal">
-      {% if site.links.arxiv != "" %}<a class="btn btn--outline" href="{{ site.links.arxiv }}" target="_blank" rel="noopener">arXiv ↗</a>{% endif %}
+      {% if site.links.paper  != "" %}<a class="btn btn--outline" href="{{ site.links.paper }}"  target="_blank" rel="noopener">Paper ↗</a>{% endif %}
+      {% if site.links.poster != "" %}<a class="btn btn--outline" href="{{ site.links.poster }}" target="_blank" rel="noopener">Poster ↗</a>{% endif %}
       {% if site.links.data  != "" %}<a class="btn btn--outline" href="{{ site.links.data }}"  target="_blank" rel="noopener">Dataset ↗</a>{% endif %}
       {% if site.links.code  != "" %}<a class="btn btn--outline" href="{{ site.links.code }}"  target="_blank" rel="noopener">Code ↗</a>
       {% else %}<span class="btn btn--ghost is-disabled">Code — coming soon</span>{% endif %}

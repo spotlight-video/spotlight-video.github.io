@@ -22,7 +22,8 @@ baseurl: ""
 # --- External links (used by nav, hero, and citation) -----------------------
 # Set a link to "" to render its button as a disabled "coming soon" state.
 links:
-  arxiv: "https://arxiv.org/abs/2511.18102v1"
+  paper: "https://media.eventhosts.cc/Conferences/ECCV2026/pdfs/8243.pdf"
+  poster: "https://eccv.ecva.net/virtual/2026/poster/4969"
   data: "https://huggingface.co/datasets/UBC-ViL/Spotlight-VideoGen-Errors"
   code: "https://github.com/aditya10/Spotlight"
   pdf: "/assets/pdf/spotlight-paper.pdf"
